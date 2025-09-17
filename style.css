@@ -93,3 +93,148 @@ body, #searchForm, #results {
 .card-title, .card-text, .form-control, .form-select, label, button {
     text-align: right;
 }
+
+#background-slideshow {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    transition: opacity 2s;
+    opacity: 1;
+}
+
+/* עיצוב כותרת האתר */
+.header {
+    background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+    height: 170px; /* גובה רגיל לשני שליש */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+.header::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 0;
+}
+.header::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -1px; height: 56px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.22) 60%, rgba(0,0,0,0) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+.header h1 {
+    font-size: 3em;
+    margin: 0;
+    background: linear-gradient(45deg, #ff4e50, #1fddff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+    direction: rtl;
+}
+.header p {
+    font-size: 1.2em;
+    color: #eee;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+    direction: rtl;
+}
+
+/* מעבר רך בראש הבודי מתחת להדר */
+.container::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -56px;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.22) 60%, rgba(0,0,0,0) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* כפתור מידע בצד ימין תחתון של ההדר */
+.info-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 24px;
+    z-index: 2;
+    font-size: 1.05em;
+    box-shadow: 0 2px 8px #0002;
+}
+
+/* כפתור "מי אנחנו?" בצד שמאל תחתון של ההדר */
+.about-btn {
+    position: absolute;
+    bottom: 16px;
+    left: 24px;
+    z-index: 2;
+    font-size: 1.05em;
+    box-shadow: 0 2px 8px #0002;
+}
+
+/* המלבן הגדול שמופיע מתחת לכפתור "אז מה עושים כאן?" */
+.info-box, .about-box {
+    position: absolute;
+    width: 340px;
+    max-width: 90vw;
+    min-height: 180px;
+    background: rgba(255,255,255,0.93);
+    box-shadow: 0 8px 32px #0004;
+    border-radius: 18px;
+    padding: 28px 22px 22px 22px;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s;
+    font-size: 1.08em;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.info-box.show, .about-box.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+.info-box {
+    right: 24px;
+    bottom: 56px;
+}
+.about-box {
+    left: 24px;
+    bottom: 56px;
+}
+.close-info, .close-about {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 1.1em;
+    padding: 2px 8px;
+    z-index: 2;
+}
+.info-content, .about-content {
+    color: #222;
+    min-height: 80px;
+    max-height: 220px;
+    overflow-y: auto;
+    outline: none;
+    font-size: 1em;
+    direction: rtl;
+}
