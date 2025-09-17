@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ניווט ראשי (Bootstrap Navbar) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">מידע כלי רכב</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- טופס חיפוש מספר רישוי -->
+      <form id="searchForm" class="mb-4" dir="rtl">
+        <div class="input-group mb-2">
+          <input
+            type="text"
+            class="form-control"
+            id="licenseInput"
+            placeholder="הכנס מספר רישוי"
+            style="text-align:right"
+          />
+        </div>
+        <div class="input-group mb-2">
+          <input
+            type="text"
+            class="form-control"
+            id="modelInput"
+            placeholder="הכנס דגם רכב"
+            style="text-align:right"
+          />
+        </div>
+        <div class="input-group mb-2">
+          <input
+            type="text"
+            class="form-control"
+            id="colorInput"
+            placeholder="הכנס צבע רכב"
+            style="text-align:right"
+          />
+        </div>
+        <div class="input-group mb-2">
+          <input
+            type="text"
+            class="form-control"
+            id="yearInput"
+            placeholder="הכנס שנה"
+            style="text-align:right"
+          />
+        </div>
+        <div class="input-group mb-2">
+          <input
+            type="text"
+            class="form-control"
+            id="makerInput"
+            placeholder="הכנס יצרן"
+            style="text-align:right"
+          />
+        </div>
+        <div class="input-group mb-2">
+          <select class="form-select" id="sortSelect" style="text-align:right">
+            <option value="">מיין לפי...</option>
+            <option value="model">דגם (א-ב)</option>
+            <option value="year">שנה</option>
+            <option value="license">מספר רישוי</option>
+          </select>
+        </div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary w-100 mb-2" type="submit">חפש</button>
+          <button class="btn btn-secondary w-100" type="button" id="clearBtn">נקה הכל</button>
+        </div>
+      </form>
+
+      <!-- אזור תוצאות -->
+      <div id="results" class="row g-3" dir="rtl">
+        <!-- כאן יוצגו כרטיסי הרכב -->
+      </div>
+    </div>
+
+    <!-- קישורים ל־Bootstrap ו־jQuery -->
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- קובץ JS מותאם אישית -->
+    <script src="script.js"></script>
+  </body>
+</html>
+
