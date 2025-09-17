@@ -1,95 +1,155 @@
 /* עיצוב רקע עם תמונה ושכבת צבע */
 body {
-    min-height: 100vh;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: url('https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
-    background-size: cover;
-    position: relative;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1500&q=80")
+    no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
 }
 body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, #e0eafc88 0%, #cfdef388 100%);
-    z-index: 0;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #e0eafc88 0%, #cfdef388 100%);
+  z-index: 0;
 }
-.container, main {
-    position: relative;
-    z-index: 1;
+.container,
+main {
+  position: relative;
+  z-index: 1;
 }
 
 /* עיצוב לכרטיסי הרכב */
+/* ברירת מחדל לכרטיס: צבע info */
 .card {
-    border-radius: 20px;
-    transition: box-shadow 0.3s, background 0.3s;
-    box-shadow: 0 4px 18px #0002;
-    background: #fffde9cc;
-    border: none;
+  border-radius: 20px;
+  transition: box-shadow 0.3s, background 0.3s;
+  box-shadow: 0 4px 18px #0002;
+  background: #d1ecf1cc !important;
+  border: none;
 }
-.card.bg-info {
-    background: #d1ecf1cc !important;
+/* לאחר לחיצה: צבע לבן */
+.card.clicked {
+  background: #fff !important;
 }
 .card-title {
-    color: #007bff;
-    font-weight: bold;
-    font-size: 1.25em;
-    margin-bottom: 8px;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 1.25em;
+  margin-bottom: 8px;
 }
 .card-text {
-    font-size: 1.08em;
-    color: #333;
+  font-size: 1.08em;
+  color: #333;
 }
 .card-body {
-    padding: 22px 18px;
+  padding: 22px 18px;
 }
 
 /* עיצוב לטופס החיפוש - קטן ומעוגל */
+/* עיצוב לכרטיס החיפוש החדש */
+.search-row {
+  max-width: 1100px;
+  margin: 0 auto 32px auto;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.search-card {
+  box-shadow: 0 2px 12px #0002;
+  border-radius: 32px;
+  background: #fff9;
+  padding: 24px 28px;
+  margin-bottom: 0;
+}
 #searchForm {
-    max-width: 350px;
-    margin: 0 auto;
-    box-shadow: 0 2px 12px #0002;
-    border-radius: 32px;
-    background: #fff9;
-    padding: 10px 18px;
+  width: 100%;
+  margin: 0;
 }
-.input-group {
-    margin-bottom: 10px;
+.search-btns {
+  margin-top: 8px;
 }
-.input-group .form-control {
-    font-size: 1.05em;
-    padding: 8px 12px;
-    border-radius: 24px 0 0 24px;
+.search-btns .btn {
+  min-width: 120px;
+  font-size: 1.08em;
+  border-radius: 24px;
+  padding: 10px 0;
 }
-.input-group .btn {
+/* עיצוב לשדות החיפוש החדשים */
+/* אחידות גודל לשדות החיפוש */
+.search-card .form-control,
+.search-card .form-select {
+  font-size: 1.08em;
+  padding: 12px 18px;
+  border-radius: 24px;
+  margin-bottom: 0;
+  min-width: 180px;
+  max-width: 100%;
+  height: 48px;
+  box-sizing: border-box;
+}
+/* תיקון מיקום החץ של select ב-RTL */
+.search-card .form-select {
+  min-width: 180px;
+  direction: rtl;
+  text-align: right;
+  background-position: left 1.2em center;
+}
+
+/* צימוד כפתורים לצדדים */
+/* צימוד כפתורים לצדדים של הכרטיס בפנים ולא של השורה */
+/* הצמדה מוחלטת של הכפתורים לצדדים של הכרטיס */
+/* צימוד כפתורים לצדדים */
+.row.mt-3.align-items-center {
+  flex-wrap: wrap;
+}
+.row.mt-3.align-items-center .col-md-6:first-child {
+  justify-content: flex-end !important;
+  display: flex;
+}
+.row.mt-3.align-items-center .col-md-6:last-child {
+  justify-content: flex-start !important;
+  display: flex;
+}
+@media (max-width: 768px) {
+  .row.mt-3.align-items-center .col-md-6 {
+    justify-content: center !important;
+    padding: 0;
+  }
+}
+@media (max-width: 768px) {
+  .search-card .form-control,
+  .search-card .form-select {
+    min-width: 100%;
+    height: 44px;
     font-size: 1em;
-    border-radius: 0 24px 24px 0;
-    padding: 8px 22px;
-    background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
-    border: none;
-}
-.input-group .btn:hover {
-    background: linear-gradient(90deg, #0056b3 60%, #00aaff 100%);
-}
-.form-select {
-    border-radius: 24px;
-    font-size: 1.05em;
-    padding: 8px 12px;
+  }
 }
 
 /* עיצוב לאזור התוצאות */
 #results {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 /* אנימציה לכרטיסים (משתמש ב־animate.css) */
 .animate__animated.animate__fadeIn {
-    animation-duration: 0.8s;
+  animation-duration: 0.8s;
 }
 
-body, #searchForm, #results {
-    direction: rtl;
+body,
+#searchForm,
+#results {
+  direction: rtl;
 }
 
-.card-title, .card-text, .form-control, .form-select, label, button {
-    text-align: right;
+.card-title,
+.card-text,
+.form-control,
+.form-select,
+label,
+button {
+  text-align: right;
 }
