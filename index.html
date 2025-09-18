@@ -14,7 +14,11 @@
     />
   </head>
   <body>
-    <div id="background-slideshow"></div>
+    <!-- רקע מתחלף (2 שכבות לשם crossfade חלק) -->
+    <div id="background-slideshow">
+      <div class="bg-slide"></div>
+      <div class="bg-slide"></div>
+    </div>
 
     <!-- כותרת מעוצבת -->
     <header class="header">
@@ -83,6 +87,7 @@
                   <option value="model">יצרן (א-ב)</option>
                   <option value="year">שנה</option>
                   <option value="license">מספר רישוי</option>
+                  <option value="color">צבע</option>
                 </select>
               </div>
             </div>
@@ -119,17 +124,11 @@
       </div>
     </main>
 
-    <!-- קישורים ל־Bootstrap ו־jQuery -->
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- קובץ JS מותאם אישית -->
+    <!-- קובץ JS שלך -->
     <script src="script.js"></script>
 
     <!-- Footer -->

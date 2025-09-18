@@ -119,10 +119,10 @@ body {
 body {
   min-height: 100vh;
   font-family: "Segoe UI", Arial, sans-serif;
-  background: url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1500&q=80")
-    no-repeat center center fixed;
-  background-size: cover;
+  background-color: #111; /* גיבוי כהה במקרה של טעינה איטית */
   position: relative;
+  margin: 0;
+  padding: 0;
 }
 body::before {
   content: "";
@@ -131,6 +131,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
+  /* שכבת גלישה עדינה מעל הרקע */
   background: linear-gradient(135deg, #e0eafc88 0%, #cfdef388 100%);
   z-index: 0;
 }
@@ -140,8 +141,7 @@ main {
   z-index: 1;
 }
 
-/* עיצוב לכרטיסי הרכב */
-/* ברירת מחדל לכרטיס: צבע info */
+/* כרטיסים */
 .card {
   border-radius: 20px;
   transition: box-shadow 0.3s, background 0.3s;
@@ -149,7 +149,6 @@ main {
   background: #d1ecf1cc !important;
   border: none;
 }
-/* לאחר לחיצה: צבע לבן */
 .card.clicked {
   background: #fff !important;
 }
@@ -167,8 +166,7 @@ main {
   padding: 22px 18px;
 }
 
-/* עיצוב לטופס החיפוש - קטן ומעוגל */
-/* עיצוב לכרטיס החיפוש החדש */
+/* טופס החיפוש */
 .search-row {
   max-width: 1100px;
   margin: 0 auto 32px auto;
@@ -195,8 +193,6 @@ main {
   border-radius: 24px;
   padding: 10px 0;
 }
-/* עיצוב לשדות החיפוש החדשים */
-/* אחידות גודל לשדות החיפוש */
 .search-card .form-control,
 .search-card .form-select {
   font-size: 1.08em;
@@ -208,7 +204,6 @@ main {
   height: 48px;
   box-sizing: border-box;
 }
-/* תיקון מיקום החץ של select ב-RTL */
 .search-card .form-select {
   min-width: 180px;
   direction: rtl;
@@ -216,9 +211,6 @@ main {
   background-position: left 1.2em center;
 }
 
-/* צימוד כפתורים לצדדים */
-/* צימוד כפתורים לצדדים של הכרטיס בפנים ולא של השורה */
-/* הצמדה מוחלטת של הכפתורים לצדדים של הכרטיס */
 /* צימוד כפתורים לצדדים */
 .row.mt-3.align-items-center {
   flex-wrap: wrap;
@@ -246,22 +238,22 @@ main {
   }
 }
 
-/* עיצוב לאזור התוצאות */
+/* אזור התוצאות */
 #results {
   margin-top: 20px;
 }
 
-/* אנימציה לכרטיסים (משתמש ב־animate.css) */
+/* אנימציה לכרטיסים */
 .animate__animated.animate__fadeIn {
   animation-duration: 0.8s;
 }
 
+/* כיווניות RTL */
 body,
 #searchForm,
 #results {
   direction: rtl;
 }
-
 .card-title,
 .card-text,
 .form-control,
@@ -271,26 +263,41 @@ button {
   text-align: right;
 }
 
+/* --- רקע מתחלף עם 2 שכבות (crossfade) --- */
 #background-slideshow {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
+  z-index: -1; /* מתחת לתוכן אך מעל רקע בדפדפן */
   width: 100vw;
   height: 100vh;
-  background-size: cover;
-  background-position: center center;
-  transition: opacity 2s;
-  opacity: 1;
+  overflow: hidden;
 }
 
-/* עיצוב כותרת האתר */
+.bg-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  will-change: opacity;
+}
+
+.bg-slide.show {
+  opacity: 1;
+}
+/* https://images.unsplash.com/photo-1663237618591-3f0fe8728b44?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjUyfHxzcGVlZHxlbnwwfHwwfHx8Mg%3D%3D */
+/* כותרת ההדר */
 .header {
   background: url("https://images.unsplash.com/photo-1663237618591-3f0fe8728b44?auto=format&fit=crop&w=1500&q=80")
     no-repeat center center/cover;
-  height: 170px; /* גובה רגיל לשני שליש */
+  height: 170px;
   display: flex;
   flex-direction: column;
   justify-content: center;
