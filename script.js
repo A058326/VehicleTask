@@ -1,5 +1,5 @@
 // הפעלת חיפוש אוטומטית כאשר משתנה ערך המיון
-$("#sortSelect").on("change", function() {
+$("#sortSelect").on("change", function () {
   $("#searchForm").submit();
 });
 // בעת שליחת הטופס מתבצע חיפוש
@@ -162,7 +162,7 @@ $("#searchForm").on("submit", function (e) {
                                 <p class="card-text">יצרן: ${
                                   car.tozeret_nm || "לא ידוע"
                                 }<br>
-                                יצרן: ${car.kinuy_mishari || "לא ידוע"}<br>
+                                דגם: ${car.kinuy_mishari || "לא ידוע"}<br>
                                 שנה: ${car.shnat_yitzur || "לא ידוע"}<br>
                                 צבע: ${car.tzeva_rechev || "לא ידוע"}</p>
                             </div>
@@ -218,4 +218,45 @@ $(document).on("click", ".card", function (e) {
 // דוגמה לאנימציה נוספת עם jQuery: מעבר חלק לראש הדף בלחיצה על ה־Navbar
 $(".navbar-brand").on("click", function () {
   $("html, body").animate({ scrollTop: 0 }, 600);
+});
+
+// רקע מתחלף
+const bgImages = [
+  "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1500&q=80", // 1
+  "https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=1500&q=80", // 2
+  "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1500&q=80", // 3
+  "https://images.unsplash.com/photo-1531850959096-cfbb6f26c5a8?auto=format&fit=crop&w=1500&q=80", // 4
+];
+let bgIndex = 0;
+const bgDiv = document.getElementById("background-slideshow");
+
+// הגדרת תמונה ראשונה
+bgDiv.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
+bgDiv.style.opacity = 1;
+
+function fadeToNextBg() {
+  bgDiv.style.transition = "opacity 2s";
+  bgDiv.style.opacity = 0;
+  setTimeout(() => {
+    bgIndex = (bgIndex + 1) % bgImages.length;
+    bgDiv.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
+    bgDiv.style.opacity = 1;
+  }, 2000);
+}
+
+// מעבר כל 10 שניות (כולל 2 שניות מעבר)
+setInterval(fadeToNextBg, 20000);
+
+$("#infoBtn").on("click", function () {
+  $("#infoBox").addClass("show");
+});
+$("#closeInfo").on("click", function () {
+  $("#infoBox").removeClass("show");
+});
+
+$("#aboutBtn").on("click", function () {
+  $("#aboutBox").addClass("show");
+});
+$("#closeAbout").on("click", function () {
+  $("#aboutBox").removeClass("show");
 });
