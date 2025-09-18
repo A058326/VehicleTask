@@ -197,31 +197,6 @@ $(document).ready(function () {
     $("#results").html("");
   });
 
-  // רקע מתחלף
-  const bgImages = [
-    "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1500&q=80",
-    "https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=1500&q=80",
-    "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1500&q=80",
-    "https://images.unsplash.com/photo-1531850959096-cfbb6f26c5a8?auto=format&fit=crop&w=1500&q=80",
-  ];
-  let bgIndex = 0;
-  const bgDiv = document.getElementById("background-slideshow");
-
-  bgDiv.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
-  bgDiv.style.opacity = 1;
-
-  function fadeToNextBg() {
-    bgDiv.style.transition = "opacity 2s";
-    bgDiv.style.opacity = 0;
-    setTimeout(() => {
-      bgIndex = (bgIndex + 1) % bgImages.length;
-      bgDiv.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
-      bgDiv.style.opacity = 1;
-    }, 2000);
-  }
-  setInterval(fadeToNextBg, 20000);
-
-  // קישור דינמי בין כפתור לתיבה
   $(".header button[data-target]").on("click", function () {
     var target = $(this).data("target");
     $(target).addClass("active");

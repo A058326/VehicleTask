@@ -17,45 +17,12 @@
     <div id="background-slideshow"></div>
 
     <!-- כותרת מעוצבת -->
-    <div class="header">
+    <header class="header">
       <h1>🚗Info Car Israel</h1>
       <p>כל מה שצריך לדעת על רכבים בישראל - במקום אחד</p>
-      <button class="btn btn-info info-btn" data-target="#infoBox">
-        אז מה עושים כאן?
-      </button>
-      <button class="btn btn-info about-btn" data-target="#aboutBox">
-        מי אנחנו?
-      </button>
-    </div>
-    <div id="infoBox" class="info-box">
-      <button id="closeInfo" class="btn btn-sm btn-danger close-info">
-        &times;
-      </button>
-      <div class="info-content" contenteditable="true">
-        חפש רכב לפי קריטריונים שונים כמו מספר רישוי, דגם, צבע, שנה ויצרן. ניתן
-        גם למיין את התוצאות לפי דגם, שנה או מספר רישוי. כל המידע מעודכן ומגיע
-        ממקורות רשמיים.
-      </div>
-    </div>
-    <div id="aboutBox" class="about-box">
-      <button id="closeAbout" class="btn btn-sm btn-danger close-about">
-        &times;
-      </button>
-      <div class="about-content" contenteditable="true">
-        האתר נבנה על ידי צוות Info Car Israel, במטרה להנגיש מידע אמין ועדכני על
-        כלי רכב בישראל. אנו מאמינים בשקיפות ובשירות איכותי לכל משתמש.
-      </div>
-    </div>
-    <!----
-    ניווט ראשי (Bootstrap Navbar) -->
-    <!-- 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">מידע כלי רכב</a>
-      </div>
-    </nav>
--->
-    <div class="container">
+    </header>
+
+    <main class="container">
       <!-- טופס חיפוש בתוך כרטיס -->
       <div class="search-row mb-4" dir="rtl">
         <form id="searchForm" class="w-100" dir="rtl">
@@ -150,7 +117,7 @@
       <div id="results" class="row g-3" dir="rtl">
         <!-- כאן יוצגו כרטיסי הרכב -->
       </div>
-    </div>
+    </main>
 
     <!-- קישורים ל־Bootstrap ו־jQuery -->
     <!-- Bootstrap CSS -->
