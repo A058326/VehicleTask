@@ -15,7 +15,6 @@ $("#searchForm").on("submit", function (e) {
   // ולידציה לשדות החיפוש
   let valid = false;
   let errorMsg = "";
-  // בדיקת מספר רישוי (7-8 ספרות)
   if (license) {
     if (/^\d{7,8}$/.test(license)) {
       valid = true;
@@ -23,22 +22,16 @@ $("#searchForm").on("submit", function (e) {
       errorMsg = "מספר רישוי חייב להיות 7 או 8 ספרות.";
     }
   }
-  // בדיקת דגם/צבע/יצרן (לפחות 2 תווים)
   if (model && model.length >= 2) valid = true;
-  else if (model && model.length < 2)
-    errorMsg = "דגם חייב להיות לפחות 2 תווים.";
+  else if (model && model.length < 2) errorMsg = "דגם חייב להיות לפחות 2 תווים.";
   if (color && color.length >= 2) valid = true;
-  else if (color && color.length < 2)
-    errorMsg = "צבע חייב להיות לפחות 2 תווים.";
+  else if (color && color.length < 2) errorMsg = "צבע חייב להיות לפחות 2 תווים.";
   if (maker && maker.length >= 2) valid = true;
-  else if (maker && maker.length < 2)
-    errorMsg = "יצרן חייב להיות לפחות 2 תווים.";
-  // בדיקת שנה (4 ספרות)
+  else if (maker && maker.length < 2) errorMsg = "יצרן חייב להיות לפחות 2 תווים.";
   if (year) {
     if (/^\d{4}$/.test(year)) valid = true;
     else errorMsg = "שנה חייבת להיות 4 ספרות.";
   }
-  // אם אף שדה לא תקין
   if (!valid) {
     $("#results").html(
       '<div class="alert alert-warning">' +
@@ -98,7 +91,6 @@ $("#searchForm").on("submit", function (e) {
 
       // מיון תוצאות
       if (sortBy === "model") {
-        // מיון אלפביתי לפי יצרן רק אם יש יותר מיצרן אחד
         const makers = [
           ...new Set(cars.map((car) => car.tozeret_nm).filter(Boolean)),
         ];
@@ -113,7 +105,6 @@ $("#searchForm").on("submit", function (e) {
           return;
         }
       } else if (sortBy === "year") {
-        // מיון לפי שנה רק אם יש חיפוש לפי שנה
         if (year) {
           cars.sort((a, b) => (b.shnat_yitzur || 0) - (a.shnat_yitzur || 0));
         } else {
@@ -129,7 +120,6 @@ $("#searchForm").on("submit", function (e) {
           return numA - numB;
         });
       } else if (sortBy === "color") {
-        // מיון לפי צבע רק אם יש חיפוש לפי צבע
         if (color) {
           cars.sort((a, b) =>
             (a.tzeva_rechev || "").localeCompare(b.tzeva_rechev || "")
@@ -149,26 +139,24 @@ $("#searchForm").on("submit", function (e) {
         return;
       }
 
-      // יצירת כרטיסי Bootstrap לכל רכב
+      // יצירת כרטיסים
       var html = "";
       $.each(cars, function (i, car) {
         html += `
-                    <div class="col-md-4">
-                        <div class="card shadow animate__animated animate__fadeIn">
-                            <div class="card-body">
-                                <h5 class="card-title">מספר רישוי: ${
-                                  car.mispar_rechev
-                                }</h5>
-                                <p class="card-text">יצרן: ${
-                                  car.tozeret_nm || "לא ידוע"
-                                }<br>
-                                דגם: ${car.kinuy_mishari || "לא ידוע"}<br>
-                                שנה: ${car.shnat_yitzur || "לא ידוע"}<br>
-                                צבע: ${car.tzeva_rechev || "לא ידוע"}</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
+          <div class="col-md-4">
+            <div class="card shadow animate__animated animate__fadeIn">
+              <div class="card-body">
+                <h5 class="card-title">מספר רישוי: ${car.mispar_rechev}</h5>
+                <p class="card-text">
+                  יצרן: ${car.tozeret_nm || "לא ידוע"}<br>
+                  דגם: ${car.kinuy_mishari || "לא ידוע"}<br>
+                  שנה: ${car.shnat_yitzur || "לא ידוע"}<br>
+                  צבע: ${car.tzeva_rechev || "לא ידוע"}
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
       });
       $("#results").html(html);
     },
@@ -188,7 +176,7 @@ $("#searchForm").on("submit", function (e) {
   });
 });
 
-// ניקוי שדות החיפוש בלבד
+// ניקוי שדות
 $("#clearFieldsBtn").on("click", function () {
   $("#licenseInput").val("");
   $("#modelInput").val("");
@@ -198,14 +186,13 @@ $("#clearFieldsBtn").on("click", function () {
   $("#sortSelect").val("");
 });
 
-// ניקוי תוצאות בלבד
+// ניקוי תוצאות
 $("#clearResultsBtn").on("click", function () {
   $("#results").html("");
 });
 
-// מעבר צבע רקע לכרטיסים רק בלחיצה על הכרטיס עצמו (ולא על שדות/כפתורים)
+// כרטיס לחיץ
 $(document).on("click", ".card", function (e) {
-  // אם נלחץ אלמנט שהוא input, select, button או בתוכם - לא להחליף צבע
   if (
     $(e.target).is("input, select, button, textarea") ||
     $(e.target).closest("input, select, button, textarea").length
@@ -215,45 +202,59 @@ $(document).on("click", ".card", function (e) {
   $(this).toggleClass("clicked");
 });
 
-// דוגמה לאנימציה נוספת עם jQuery: מעבר חלק לראש הדף בלחיצה על ה־Navbar
+// מעבר חלק לראש הדף
 $(".navbar-brand").on("click", function () {
   $("html, body").animate({ scrollTop: 0 }, 600);
 });
 
-// רקע מתחלף
+// === רקע מתחלף עם 2 שכבות ===
 const bgImages = [
-  "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1500&q=80", // 1
-  "https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=1500&q=80", // 2
-  "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1500&q=80", // 3
-  "https://images.unsplash.com/photo-1531850959096-cfbb6f26c5a8?auto=format&fit=crop&w=1500&q=80", // 4
+  "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1508974491678-7ec251d629fd?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1531850959096-cfbb6f26c5a8?auto=format&fit=crop&w=1600&q=80"
 ];
+//https://images.unsplash.com/photo-1584902645120-f86567d892b6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTE3fHxzcG9ydHMlMjBjYXJ8ZW58MHx8MHx8fDI%3D
+//https://images.unsplash.com/photo-1508974491678-7ec251d629fd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjM0fHxzcG9ydHMlMjBjYXJ8ZW58MHx8MHx8fDI%3D
+// אפשר לשנות כאן את זמני התצוגה והfade אם תרצה:
+const DISPLAY_MS = 18000; // כמה זמן כל תמונה נשארת גלויה (ms)
+const FADE_MS = 2000; // משך ה־fade (ms) — גם מוגדר ב־CSS כ־2s
+
 let bgIndex = 0;
-const bgDiv = document.getElementById("background-slideshow");
+const slides = document.querySelectorAll(".bg-slide");
 
-// הגדרת תמונה ראשונה
-bgDiv.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
-bgDiv.style.opacity = 1;
+// וידוא ש־DOM קיים ושהשכבות קיימות
+if (slides.length >= 2) {
+  // הצגת תמונה ראשונה
+  slides[0].style.backgroundImage = `url('${bgImages[bgIndex]}')`;
+  slides[0].classList.add("show");
 
-function fadeToNextBg() {
-  bgDiv.style.transition = "opacity 2s";
-  bgDiv.style.opacity = 0;
-  setTimeout(() => {
+  function fadeToNextBg() {
+    const current = slides[bgIndex % 2];
     bgIndex = (bgIndex + 1) % bgImages.length;
-    bgDiv.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
-    bgDiv.style.opacity = 1;
-  }, 2000);
+    const next = slides[bgIndex % 2];
+
+    // טוען את התמונה הבאה (שורת קישור)
+    next.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
+
+    // חציית fade: הצג את הבאה והסתר את הנוכחית
+    next.classList.add("show");
+    current.classList.remove("show");
+  }
+
+  // התחלה של המעברים — שימוש ב־DISPLAY_MS + FADE_MS בסך הכל
+  setInterval(fadeToNextBg, DISPLAY_MS + FADE_MS);
+} else {
+  console.warn("לא נמצאו שתי שכבות .bg-slide — אנא וודא ש־index.html כולל שתי div-ים בתוך #background-slideshow");
 }
 
-// מעבר כל 10 שניות (כולל 2 שניות מעבר)
-setInterval(fadeToNextBg, 20000);
-
+// תיבות מידע
 $("#infoBtn").on("click", function () {
   $("#infoBox").addClass("show");
 });
 $("#closeInfo").on("click", function () {
   $("#infoBox").removeClass("show");
 });
-
 $("#aboutBtn").on("click", function () {
   $("#aboutBox").addClass("show");
 });
