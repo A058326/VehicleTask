@@ -197,6 +197,7 @@ $(document).ready(function () {
     $("#results").html("");
   });
 
+  // קישור דינמי בין כפתור לתיבה
   $(".header button[data-target]").on("click", function () {
     var target = $(this).data("target");
     $(target).addClass("active");
