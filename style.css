@@ -1,35 +1,32 @@
-.btn {
-  border-radius: 24px !important;
-}
-.search-card {
-  border-radius: 24px !important;
+html {
+  min-height: 100%;
+  position: relative;
 }
 
-/* רקע לטקסט הפוטר בלבד בגובה שדה חיפוש ובצבע כרטיס תוצאות */
-.footer-bg-text {
-  display: inline-block;
-  background: #d1ecf1cc;
-  height: 48px;
-  line-height: 48px;
-  padding: 0 24px;
-  border-radius: 24px;
-  font-size: 1.07em;
-}
-/* פס צבעוני מתחת לפוטר */
-/* רקע מתחת לפוטר בגובה שדה חיפוש ובצבע כרטיס תוצאות */
-.footer-bg {
-  width: 100%;
-  height: 48px;
-  background: #d1ecf1cc;
-  margin: 0;
-  padding: 0;
-}
-/* הגדרת גופן Heebo לכל האתר */
 body {
-  font-family: "Heebo", Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   font-size: 17px;
   line-height: 1.7;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 70px; /* גובה הפוטר */
+  background: url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1500&q=80")
+    no-repeat center center fixed;
+  background-size: cover;
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #e0eafc88 0%, #cfdef388 100%);
+  z-index: 0;
+}
+
+body,
 .card-title,
 .card-text,
 .form-control,
@@ -45,227 +42,16 @@ h5,
 h6 {
   font-family: "Heebo", Arial, sans-serif !important;
 }
-h1 {
-  font-size: 2.1em;
-  font-weight: 700;
-}
-h2 {
-  font-size: 1.5em;
-  font-weight: 700;
-}
-.card-title {
-  font-size: 1.18em;
-  font-weight: 700;
-}
-.card-text {
-  font-size: 1.05em;
-}
-/* עיצוב ל-footer */
-/* עיצוב ל-footer: טקסט שחור, ללא מסגרת, תמיד בתחתית הדף */
-.footer {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: transparent;
-  color: #000;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  font-size: 1.08em;
-  border: none;
-  box-shadow: none;
-  position: relative;
-  text-align: left;
-}
-
-html {
-  min-height: 100%;
-  position: relative;
-}
-body {
-  min-height: 100vh;
-  position: relative;
-  padding-bottom: 70px; /* גובה הפוטר */
-}
-.footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-/* עיצוב רקע עם תמונה ושכבת צבע */
-body {
-  min-height: 100vh;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1500&q=80")
-    no-repeat center center fixed;
-  background-size: cover;
-  position: relative;
-}
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #e0eafc88 0%, #cfdef388 100%);
-  z-index: 0;
-}
-.container,
-main {
-  position: relative;
-  z-index: 1;
-}
-
-/* עיצוב לכרטיסי הרכב */
-/* ברירת מחדל לכרטיס: צבע info */
-.card {
-  border-radius: 20px;
-  transition: box-shadow 0.3s, background 0.3s;
-  box-shadow: 0 4px 18px #0002;
-  background: #d1ecf1cc !important;
-  border: none;
-}
-/* לאחר לחיצה: צבע לבן */
-.card.clicked {
-  background: #fff !important;
-}
-.card-title {
-  color: #007bff;
-  font-weight: bold;
-  font-size: 1.25em;
-  margin-bottom: 8px;
-}
-.card-text {
-  font-size: 1.08em;
-  color: #333;
-}
-.card-body {
-  padding: 22px 18px;
-}
-
-/* עיצוב לטופס החיפוש - קטן ומעוגל */
-/* עיצוב לכרטיס החיפוש החדש */
-.search-row {
-  max-width: 1100px;
-  margin: 0 auto 32px auto;
-  padding-left: 12px;
-  padding-right: 12px;
-}
-.search-card {
-  box-shadow: 0 2px 12px #0002;
-  border-radius: 24px;
-  background: #fff9;
-  padding: 24px 28px;
-  margin-bottom: 0;
-}
-#searchForm {
-  width: 100%;
-  margin: 0;
-}
-.search-btns {
-  margin-top: 8px;
-}
-.search-btns .btn {
-  min-width: 120px;
-  font-size: 1.08em;
-  border-radius: 24px;
-  padding: 10px 0;
-}
-/* עיצוב לשדות החיפוש החדשים */
-/* אחידות גודל לשדות החיפוש */
-.search-card .form-control,
-.search-card .form-select {
-  font-size: 1.08em;
-  padding: 12px 18px;
-  border-radius: 24px;
-  margin-bottom: 0;
-  min-width: 180px;
-  max-width: 100%;
-  height: 48px;
-  box-sizing: border-box;
-}
-/* תיקון מיקום החץ של select ב-RTL */
-.search-card .form-select {
-  min-width: 180px;
-  direction: rtl;
-  text-align: right;
-  background-position: left 1.2em center;
-}
-
-/* צימוד כפתורים לצדדים */
-/* צימוד כפתורים לצדדים של הכרטיס בפנים ולא של השורה */
-/* הצמדה מוחלטת של הכפתורים לצדדים של הכרטיס */
-/* צימוד כפתורים לצדדים */
-.row.mt-3.align-items-center {
-  flex-wrap: wrap;
-}
-.row.mt-3.align-items-center .col-md-6:first-child {
-  justify-content: flex-end !important;
-  display: flex;
-}
-.row.mt-3.align-items-center .col-md-6:last-child {
-  justify-content: flex-start !important;
-  display: flex;
-}
-@media (max-width: 768px) {
-  .row.mt-3.align-items-center .col-md-6 {
-    justify-content: center !important;
-    padding: 0;
-  }
-}
-@media (max-width: 768px) {
-  .search-card .form-control,
-  .search-card .form-select {
-    min-width: 100%;
-    height: 44px;
-    font-size: 1em;
-  }
-}
-
-/* עיצוב לאזור התוצאות */
-#results {
-  margin-top: 20px;
-}
-
-/* אנימציה לכרטיסים (משתמש ב־animate.css) */
-.animate__animated.animate__fadeIn {
-  animation-duration: 0.8s;
-}
 
 body,
 #searchForm,
 #results {
   direction: rtl;
 }
-
-.card-title,
-.card-text,
-.form-control,
-.form-select,
-label,
-button {
-  text-align: right;
-}
-
-#background-slideshow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  background-position: center center;
-  transition: opacity 2s;
-  opacity: 1;
-}
-
-/* עיצוב כותרת האתר */
 .header {
   background: url("https://images.unsplash.com/photo-1663237618591-3f0fe8728b44?auto=format&fit=crop&w=1600&q=80")
     no-repeat center center/cover;
-  height: 170px; /* גובה רגיל לשני שליש */
+  height: 170px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -275,6 +61,7 @@ button {
   overflow: hidden;
   margin-bottom: 0;
 }
+
 .header::after {
   content: "";
   position: absolute;
@@ -285,6 +72,7 @@ button {
   background: rgba(0, 0, 0, 0.45);
   z-index: 0;
 }
+
 .header::before {
   content: "";
   position: absolute;
@@ -301,6 +89,7 @@ button {
   z-index: 1;
   pointer-events: none;
 }
+
 .header h1 {
   font-size: 3em;
   margin: 0;
@@ -314,6 +103,7 @@ button {
   font-weight: bold;
   direction: rtl;
 }
+
 .header p {
   font-size: 1.2em;
   color: #eee;
@@ -323,46 +113,21 @@ button {
   direction: rtl;
 }
 
-/* מעבר רך בראש הבודי מתחת להדר */
-.container::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -56px;
-  left: 0;
-  right: 0;
-  height: 56px;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.22) 60%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* כפתור מידע בצד ימין תחתון של ההדר */
-.info-btn {
-  position: absolute;
-  bottom: 16px;
-  right: 24px;
-  z-index: 2;
-  font-size: 1.05em;
-  box-shadow: 0 2px 8px #0002;
-}
-
-/* כפתור "מי אנחנו?" בצד שמאל תחתון של ההדר */
+.info-btn,
 .about-btn {
   position: absolute;
   bottom: 16px;
-  left: 24px;
-  z-index: 2;
   font-size: 1.05em;
   box-shadow: 0 2px 8px #0002;
+  z-index: 2;
+}
+.info-btn {
+  right: 24px;
+}
+.about-btn {
+  left: 24px;
 }
 
-/* המלבן הגדול שמופיע מתחת לכפתור "אז מה עושים כאן?" */
 .info-box,
 .about-box {
   position: absolute;
@@ -372,7 +137,7 @@ button {
   background: rgba(255, 255, 255, 0.93);
   box-shadow: 0 8px 32px #0004;
   border-radius: 18px;
-  padding: 28px 22px 22px 22px;
+  padding: 28px 22px 22px;
   z-index: 999;
   opacity: 0;
   pointer-events: none;
@@ -395,6 +160,7 @@ button {
   left: 24px;
   bottom: 56px;
 }
+
 .close-info,
 .close-about {
   position: absolute;
@@ -404,6 +170,7 @@ button {
   padding: 2px 8px;
   z-index: 2;
 }
+
 .info-content,
 .about-content {
   color: #222;
@@ -413,4 +180,178 @@ button {
   outline: none;
   font-size: 1em;
   direction: rtl;
+}
+
+.search-row {
+  max-width: 1100px;
+  margin: 0 auto 32px auto;
+  padding: 0 12px;
+}
+
+#searchForm {
+  width: 100%;
+  margin: 0;
+}
+
+.search-card {
+  border-radius: 24px;
+  box-shadow: 0 2px 12px #0002;
+  background: #fff9;
+  padding: 24px 28px;
+  margin-bottom: 0;
+}
+
+.search-card .form-control,
+.search-card .form-select {
+  font-size: 1.08em;
+  padding: 12px 18px;
+  border-radius: 24px;
+  margin-bottom: 0;
+  min-width: 180px;
+  max-width: 100%;
+  height: 48px;
+  box-sizing: border-box;
+}
+
+.search-card .form-select {
+  direction: rtl;
+  text-align: right;
+  background-position: left 1.2em center;
+}
+
+.search-btns {
+  margin-top: 8px;
+}
+.search-btns .btn {
+  min-width: 120px;
+  font-size: 1.08em;
+  border-radius: 24px;
+  padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .search-card .form-control,
+  .search-card .form-select {
+    min-width: 100%;
+    height: 44px;
+    font-size: 1em;
+  }
+}
+
+.card {
+  border-radius: 20px;
+  transition: box-shadow 0.3s, background 0.3s;
+  box-shadow: 0 4px 18px #0002;
+  background: #d1ecf1cc !important;
+  border: none;
+}
+.card.clicked {
+  background: #fff !important;
+}
+
+.card-title {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 8px;
+}
+.card-text {
+  font-size: 1.08em;
+  color: #333;
+}
+.card-body {
+  padding: 22px 18px;
+}
+
+#results {
+  margin-top: 20px;
+}
+
+.btn {
+  border-radius: 24px !important;
+}
+
+.row.mt-3.align-items-center {
+  flex-wrap: wrap;
+}
+.row.mt-3.align-items-center .col-md-6:first-child {
+  justify-content: flex-end;
+  display: flex;
+}
+.row.mt-3.align-items-center .col-md-6:last-child {
+  justify-content: flex-start;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .row.mt-3.align-items-center .col-md-6 {
+    justify-content: center !important;
+    padding: 0;
+  }
+}
+
+.card-title,
+.card-text,
+.form-control,
+.form-select,
+label,
+button {
+  text-align: right;
+}
+
+.footer-bg {
+  width: 100%;
+  height: 48px;
+  background: #d1ecf1cc;
+  margin: 0;
+  padding: 0;
+}
+.footer-bg-text {
+  display: inline-block;
+  background: #d1ecf1cc;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 24px;
+  border-radius: 24px;
+  font-size: 1.07em;
+}
+
+.footer {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: transparent;
+  color: #000;
+  padding: 16px 0;
+  font-size: 1.08em;
+  border: none;
+  box-shadow: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: left;
+}
+
+.animate__animated.animate__fadeIn {
+  animation-duration: 0.8s;
+}
+
+.container,
+main {
+  position: relative;
+  z-index: 1;
+}
+
+#background-slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  transition: opacity 2s;
+  opacity: 1;
 }
