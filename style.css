@@ -1,3 +1,120 @@
+.btn {
+  border-radius: 24px !important;
+}
+.search-card {
+  border-radius: 24px !important;
+}
+/* חלון מודאלי שמופיע מעל כל התוכן */
+/* עיצוב infoBox ו-aboutBox כמו שהיה קודם, לא מודאל */
+.info-box,
+.about-box {
+  max-width: 420px;
+  width: 90vw;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px #0003;
+  padding: 32px 24px 18px 24px;
+  margin: 32px auto;
+  text-align: right;
+  display: none;
+  position: relative;
+  z-index: 1002;
+}
+.info-box.active,
+.about-box.active {
+  display: block;
+}
+.close-info,
+.close-about {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+/* רקע לטקסט הפוטר בלבד בגובה שדה חיפוש ובצבע כרטיס תוצאות */
+.footer-bg-text {
+  display: inline-block;
+  background: #d1ecf1cc;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 24px;
+  border-radius: 24px;
+  font-size: 1.07em;
+}
+/* פס צבעוני מתחת לפוטר */
+/* רקע מתחת לפוטר בגובה שדה חיפוש ובצבע כרטיס תוצאות */
+.footer-bg {
+  width: 100%;
+  height: 48px;
+  background: #d1ecf1cc;
+  margin: 0;
+  padding: 0;
+}
+/* הגדרת גופן Heebo לכל האתר */
+body {
+  font-family: "Heebo", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.card-title,
+.card-text,
+.form-control,
+.form-select,
+.btn,
+label,
+.footer,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Heebo", Arial, sans-serif !important;
+}
+h1 {
+  font-size: 2.1em;
+  font-weight: 700;
+}
+h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.card-title {
+  font-size: 1.18em;
+  font-weight: 700;
+}
+.card-text {
+  font-size: 1.05em;
+}
+/* עיצוב ל-footer */
+/* עיצוב ל-footer: טקסט שחור, ללא מסגרת, תמיד בתחתית הדף */
+.footer {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: transparent;
+  color: #000;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-size: 1.08em;
+  border: none;
+  box-shadow: none;
+  position: relative;
+  text-align: left;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 70px; /* גובה הפוטר */
+}
+.footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 /* עיצוב רקע עם תמונה ושכבת צבע */
 body {
   min-height: 100vh;
@@ -60,7 +177,7 @@ main {
 }
 .search-card {
   box-shadow: 0 2px 12px #0002;
-  border-radius: 32px;
+  border-radius: 24px;
   background: #fff9;
   padding: 24px 28px;
   margin-bottom: 0;
